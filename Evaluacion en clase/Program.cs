@@ -14,7 +14,19 @@ class Program
         for (int i = 0; i < 10; i++)
         {
             Console.Write($"Número {i + 1}: ");
-            numeros[i] = double.Parse(Console.ReadLine());
+            // Leer la entrada del usuario como cadena
+            string input = Console.ReadLine();
+
+            // Intentar convertir la cadena a un número double
+            if (double.TryParse(input, out double numero))
+            {
+                numeros[i] = numero; // Almacenar el número convertido
+            }
+            else
+            {
+                Console.WriteLine("Entrada inválida. Ingrese un número válido.");
+                i--; // Decrementar i para repetir la entrada para este índice
+            }
         }
 
         // Llamar a la función para ordenar los números
@@ -53,3 +65,4 @@ class Program
         }
     }
 }
+
